@@ -49,3 +49,171 @@ INSERT INTO Palco (id_palco, nome_palco, setor, tema, capacidade_maxima, festiva
 INSERT INTO Palco (id_palco, nome_palco, setor, tema, capacidade_maxima, festival) VALUES (28, 'Palco Jangada', 'Centro', 'Rock', 15000, 14);
 INSERT INTO Palco (id_palco, nome_palco, setor, tema, capacidade_maxima, festival) VALUES (29, 'Palco Jazz', 'Praca', 'Bourbon', 10000, 15);
 INSERT INTO Palco (id_palco, nome_palco, setor, tema, capacidade_maxima, festival) VALUES (30, 'Palco Blues', 'Igreja', 'Tradicional', 5000, 15);
+
+-- EQUIPAMENTOS
+INSERT INTO Equipamento_de_palco (id_equipamento, tipo) VALUES (1, 'Caixa de som');
+INSERT INTO Equipamento_de_palco (id_equipamento, tipo) VALUES (2, 'Amplificador');
+INSERT INTO Equipamento_de_palco (id_equipamento, tipo) VALUES (3, 'Mesa de som');
+INSERT INTO Equipamento_de_palco (id_equipamento, tipo) VALUES (4, 'Microfone');
+INSERT INTO Equipamento_de_palco (id_equipamento, tipo) VALUES (5, 'Monitor de palco');
+INSERT INTO Equipamento_de_palco (id_equipamento, tipo) VALUES (6, 'Iluminacao LED');
+INSERT INTO Equipamento_de_palco (id_equipamento, tipo) VALUES (7, 'Gerador');
+INSERT INTO Equipamento_de_palco (id_equipamento, tipo) VALUES (8, 'Cabo P10');
+INSERT INTO Equipamento_de_palco (id_equipamento, tipo) VALUES (9, 'Cabo XLR');
+INSERT INTO Equipamento_de_palco (id_equipamento, tipo) VALUES (10, 'Direct Box');
+INSERT INTO Equipamento_de_palco (id_equipamento, tipo) VALUES (11, 'Subwoofer');
+INSERT INTO Equipamento_de_palco (id_equipamento, tipo) VALUES (12, 'Pedal de efeito');
+INSERT INTO Equipamento_de_palco (id_equipamento, tipo) VALUES (13, 'Microfone');
+INSERT INTO Equipamento_de_palco (id_equipamento, tipo) VALUES (14, 'Gerador');
+INSERT INTO Equipamento_de_palco (id_equipamento, tipo) VALUES (15, 'Mesa de som');
+
+-- BANDAS
+INSERT INTO Banda (id_banda, nome_banda, genero, rider_tecnico, lider, madrinha) VALUES (1, 'Sepultura', 'Metal', 'Rider Metal pesado', NULL, NULL);
+INSERT INTO Banda (id_banda, nome_banda, genero, rider_tecnico, lider, madrinha) VALUES (2, 'Skank', 'Pop', 'Rider Pop standard', NULL, NULL);
+INSERT INTO Banda (id_banda, nome_banda, genero, rider_tecnico, lider, madrinha) VALUES (3, 'Alok', 'Eletronico', 'Rider DJ complexo', NULL, NULL);
+INSERT INTO Banda (id_banda, nome_banda, genero, rider_tecnico, lider, madrinha) VALUES (4, 'Natiruts', 'Reggae', 'Rider Reggae vibe', NULL, NULL);
+INSERT INTO Banda (id_banda, nome_banda, genero, rider_tecnico, lider, madrinha) VALUES (5, 'BaianaSystem', 'MPB', 'Rider Experimental', NULL, NULL);
+INSERT INTO Banda (id_banda, nome_banda, genero, rider_tecnico, lider, madrinha) VALUES (6, 'Angra', 'Metal', 'Rider Metal Melodico', NULL, 1);
+INSERT INTO Banda (id_banda, nome_banda, genero, rider_tecnico, lider, madrinha) VALUES (7, 'Racionais MCs', 'Hip-Hop', 'Rider Rap clean', NULL, NULL);
+INSERT INTO Banda (id_banda, nome_banda, genero, rider_tecnico, lider, madrinha) VALUES (8, 'Titas', 'Rock', 'Rider Classic Rock', NULL, NULL);
+INSERT INTO Banda (id_banda, nome_banda, genero, rider_tecnico, lider, madrinha) VALUES (9, 'Jorge e Mateus', 'Sertanejo', 'Rider Sertanejo Top', NULL, NULL);
+INSERT INTO Banda (id_banda, nome_banda, genero, rider_tecnico, lider, madrinha) VALUES (10, 'Falamansa', 'Forro', 'Rider Forro pe de serra', NULL, NULL);
+INSERT INTO Banda (id_banda, nome_banda, genero, rider_tecnico, lider, madrinha) VALUES (11, 'Nacao Zumbi', 'MPB', 'Rider Manguebeat', NULL, 5);
+INSERT INTO Banda (id_banda, nome_banda, genero, rider_tecnico, lider, madrinha) VALUES (12, 'Ratos de Porao', 'Punk', 'Rider Punk Cru', NULL, 1);
+INSERT INTO Banda (id_banda, nome_banda, genero, rider_tecnico, lider, madrinha) VALUES (13, 'B.B. King Cover', 'Blues', 'Rider Blues Vintage', NULL, NULL);
+INSERT INTO Banda (id_banda, nome_banda, genero, rider_tecnico, lider, madrinha) VALUES (14, 'Vintage Culture', 'Eletronico', 'Rider House Music', NULL, 3);
+INSERT INTO Banda (id_banda, nome_banda, genero, rider_tecnico, lider, madrinha) VALUES (15, 'Sarcofago', 'Metal', 'Rider Black Metal', NULL, 1);
+
+-- MEMBROS
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('11111111101', 'Andreas Kisser', 1, 'N', 'S', 'S', 'N');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('11111111102', 'Derrick Green', 1, 'N', 'N', 'N', 'S');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('11111111103', 'Eloy Casagrande', 1, 'N', 'N', 'S', 'N');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('22222222201', 'Samuel Rosa', 2, 'N', 'S', 'S', 'S');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('22222222202', 'Lelo Zaneti', 2, 'N', 'N', 'S', 'N');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('22222222203', 'Henrique Portugal', 2, 'S', 'N', 'S', 'N');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('33333333301', 'Alok Petrillo', 3, 'S', 'S', 'S', 'N');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('33333333302', 'Bhaskar Petrillo', 3, 'S', 'S', 'S', 'N');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('33333333303', 'Roadie Alok', 3, 'N', 'N', 'S', 'N');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('44444444401', 'Alexandre Carlo', 4, 'N', 'S', 'S', 'S');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('44444444402', 'Luis Mauricio', 4, 'N', 'N', 'S', 'N');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('44444444403', 'Kiko Peres', 4, 'N', 'N', 'S', 'N');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('55555555501', 'Russo Passapusso', 5, 'N', 'S', 'N', 'S');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('55555555502', 'Roberto Barreto', 5, 'N', 'S', 'S', 'N');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('55555555503', 'Sekubass', 5, 'N', 'N', 'S', 'N');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('66666666601', 'Rafael Bittencourt', 6, 'S', 'S', 'S', 'N');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('66666666602', 'Fabio Lione', 6, 'N', 'N', 'N', 'S');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('66666666603', 'Felipe Andreoli', 6, 'N', 'N', 'S', 'N');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('77777777701', 'Mano Brown', 7, 'N', 'S', 'N', 'S');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('77777777702', 'KL Jay', 7, 'S', 'N', 'S', 'N');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('77777777703', 'Edi Rock', 7, 'N', 'S', 'N', 'S');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('88888888801', 'Tony Bellotto', 8, 'N', 'S', 'S', 'N');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('88888888802', 'Branco Mello', 8, 'N', 'S', 'S', 'S');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('88888888803', 'Sergio Britto', 8, 'N', 'S', 'S', 'S');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('99999999901', 'Jorge Barcelos', 9, 'N', 'N', 'N', 'S');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('99999999902', 'Mateus Liduario', 9, 'N', 'S', 'S', 'S');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('99999999903', 'Musico Jorge 1', 9, 'N', 'N', 'S', 'N');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('10101010101', 'Tato Falamansa', 10, 'N', 'S', 'S', 'S');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('10101010102', 'Dezinho', 10, 'N', 'N', 'S', 'N');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('10101010103', 'Alemao Falamansa', 10, 'N', 'N', 'S', 'N');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('11011011001', 'Jorge du Peixe NZ', 11, 'N', 'S', 'S', 'S');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('11011011002', 'Dengue NZ', 11, 'N', 'N', 'S', 'N');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('11011011003', 'Pupillo', 11, 'S', 'N', 'S', 'N');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('12012012001', 'Joao Gordo', 12, 'N', 'S', 'N', 'S');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('12012012002', 'Jao Ratos', 12, 'N', 'S', 'S', 'N');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('12012012003', 'Boni', 12, 'N', 'N', 'S', 'N');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('13013013001', 'Lucille Guitar', 13, 'N', 'N', 'S', 'N');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('13013013002', 'Blues Singer', 13, 'N', 'S', 'N', 'S');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('13013013003', 'Bass Blues', 13, 'N', 'N', 'S', 'N');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('14014014001', 'Lukas Ruiz', 14, 'S', 'S', 'S', 'N');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('14014014002', 'Produtor Vintage 1', 14, 'S', 'N', 'N', 'S');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('14014014003', 'Roadie Vintage', 14, 'N', 'N', 'S', 'N');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('15015015001', 'Wagner Lamounier', 15, 'N', 'S', 'S', 'S');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('15015015002', 'Gerald Minelli', 15, 'N', 'S', 'S', 'N');
+INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('15015015003', 'Zeder Butcher', 15, 'N', 'N', 'S', 'N');
+
+-- ATUALIZAR LIDERES
+UPDATE Banda SET lider = '11111111101' WHERE id_banda = 1;
+UPDATE Banda SET lider = '22222222201' WHERE id_banda = 2;
+UPDATE Banda SET lider = '33333333301' WHERE id_banda = 3;
+UPDATE Banda SET lider = '44444444401' WHERE id_banda = 4;
+UPDATE Banda SET lider = '55555555501' WHERE id_banda = 5;
+UPDATE Banda SET lider = '66666666601' WHERE id_banda = 6;
+UPDATE Banda SET lider = '77777777701' WHERE id_banda = 7;
+UPDATE Banda SET lider = '88888888801' WHERE id_banda = 8;
+UPDATE Banda SET lider = '99999999901' WHERE id_banda = 9;
+UPDATE Banda SET lider = '10101010101' WHERE id_banda = 10;
+UPDATE Banda SET lider = '11011011001' WHERE id_banda = 11;
+UPDATE Banda SET lider = '12012012001' WHERE id_banda = 12;
+UPDATE Banda SET lider = '13013013001' WHERE id_banda = 13;
+UPDATE Banda SET lider = '14014014001' WHERE id_banda = 14;
+UPDATE Banda SET lider = '15015015001' WHERE id_banda = 15;
+
+-- TELEFONES
+INSERT INTO Telefone_membro (membro, telefone) VALUES ('11111111101', '11999998888');
+INSERT INTO Telefone_membro (membro, telefone) VALUES ('22222222201', '31988887777');
+INSERT INTO Telefone_membro (membro, telefone) VALUES ('33333333301', '62977776666');
+INSERT INTO Telefone_membro (membro, telefone) VALUES ('44444444401', '21966665555');
+INSERT INTO Telefone_membro (membro, telefone) VALUES ('55555555501', '81955554444');
+INSERT INTO Telefone_membro (membro, telefone) VALUES ('66666666601', '11944443333');
+INSERT INTO Telefone_membro (membro, telefone) VALUES ('77777777701', '11933332222');
+INSERT INTO Telefone_membro (membro, telefone) VALUES ('88888888801', '11922221111');
+INSERT INTO Telefone_membro (membro, telefone) VALUES ('99999999901', '11911110000');
+INSERT INTO Telefone_membro (membro, telefone) VALUES ('10101010101', '11900009999');
+INSERT INTO Telefone_membro (membro, telefone) VALUES ('11011011001', '81988881234');
+INSERT INTO Telefone_membro (membro, telefone) VALUES ('12012012001', '11977775678');
+INSERT INTO Telefone_membro (membro, telefone) VALUES ('13013013001', '21966669012');
+INSERT INTO Telefone_membro (membro, telefone) VALUES ('14014014001', '11955553456');
+INSERT INTO Telefone_membro (membro, telefone) VALUES ('15015015001', '31944447890');
+
+-- INSTRUMENTOS
+INSERT INTO Instrumento (membro, tipo, marca) VALUES ('11111111101', 'Guitarra', 'Ibanez');
+INSERT INTO Instrumento (membro, tipo, marca) VALUES ('11111111103', 'Bateria', 'Tama');
+INSERT INTO Instrumento (membro, tipo, marca) VALUES ('22222222202', 'Baixo', 'Fender');
+INSERT INTO Instrumento (membro, tipo, marca) VALUES ('33333333301', 'Teclado', 'Pioneer');
+INSERT INTO Instrumento (membro, tipo, marca) VALUES ('44444444402', 'Baixo', 'Music Man');
+INSERT INTO Instrumento (membro, tipo, marca) VALUES ('55555555502', 'Guitarra', 'Gibson');
+INSERT INTO Instrumento (membro, tipo, marca) VALUES ('66666666603', 'Baixo', 'Sadowsky');
+INSERT INTO Instrumento (membro, tipo, marca) VALUES ('77777777702', 'Teclado', 'Akai');
+INSERT INTO Instrumento (membro, tipo, marca) VALUES ('88888888801', 'Guitarra', 'Fender');
+INSERT INTO Instrumento (membro, tipo, marca) VALUES ('99999999902', 'Guitarra', 'Takamine');
+INSERT INTO Instrumento (membro, tipo, marca) VALUES ('10101010102', 'Outro', 'Triangulo');
+INSERT INTO Instrumento (membro, tipo, marca) VALUES ('11011011003', 'Bateria', 'Pearl');
+INSERT INTO Instrumento (membro, tipo, marca) VALUES ('12012012002', 'Guitarra', 'Jackson');
+INSERT INTO Instrumento (membro, tipo, marca) VALUES ('14014014001', 'Teclado', 'Korg');
+INSERT INTO Instrumento (membro, tipo, marca) VALUES ('15015015003', 'Bateria', 'Ludwig');
+
+-- UTILIZA
+INSERT INTO Utiliza (banda, palco, equipamento) VALUES (1, 1, 1);
+INSERT INTO Utiliza (banda, palco, equipamento) VALUES (1, 1, 6);
+INSERT INTO Utiliza (banda, palco, equipamento) VALUES (2, 3, 4);
+INSERT INTO Utiliza (banda, palco, equipamento) VALUES (3, 4, 15);
+INSERT INTO Utiliza (banda, palco, equipamento) VALUES (4, 13, 1);
+INSERT INTO Utiliza (banda, palco, equipamento) VALUES (5, 6, 9);
+INSERT INTO Utiliza (banda, palco, equipamento) VALUES (6, 1, 2);
+INSERT INTO Utiliza (banda, palco, equipamento) VALUES (7, 2, 4);
+INSERT INTO Utiliza (banda, palco, equipamento) VALUES (8, 9, 1);
+INSERT INTO Utiliza (banda, palco, equipamento) VALUES (9, 23, 13);
+INSERT INTO Utiliza (banda, palco, equipamento) VALUES (10, 11, 4);
+INSERT INTO Utiliza (banda, palco, equipamento) VALUES (11, 5, 1);
+INSERT INTO Utiliza (banda, palco, equipamento) VALUES (12, 7, 2);
+INSERT INTO Utiliza (banda, palco, equipamento) VALUES (13, 30, 4);
+INSERT INTO Utiliza (banda, palco, equipamento) VALUES (14, 15, 3);
+
+-- APRESENTACAO
+INSERT INTO Apresentacao (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (1, 1, TO_TIMESTAMP('2026-09-10 22:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-09-10 23:30', 'YYYY-MM-DD HH24:MI'), 80000, 200000.00);
+INSERT INTO Apresentacao (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (6, 1, TO_TIMESTAMP('2026-09-10 20:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-09-10 21:15', 'YYYY-MM-DD HH24:MI'), 50000, 150000.00);
+INSERT INTO Apresentacao (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (2, 3, TO_TIMESTAMP('2026-03-25 19:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-03-25 20:30', 'YYYY-MM-DD HH24:MI'), 40000, 120000.00);
+INSERT INTO Apresentacao (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (3, 4, TO_TIMESTAMP('2026-03-25 23:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-03-26 01:00', 'YYYY-MM-DD HH24:MI'), 20000, 300000.00);
+INSERT INTO Apresentacao (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (5, 6, TO_TIMESTAMP('2026-02-14 20:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-02-14 21:30', 'YYYY-MM-DD HH24:MI'), 25000, 80000.00);
+INSERT INTO Apresentacao (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (11, 5, TO_TIMESTAMP('2026-02-14 18:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-02-14 19:15', 'YYYY-MM-DD HH24:MI'), 12000, 60000.00);
+INSERT INTO Apresentacao (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (12, 7, TO_TIMESTAMP('2026-04-18 21:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-04-18 22:30', 'YYYY-MM-DD HH24:MI'), 7000, 40000.00);
+INSERT INTO Apresentacao (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (15, 7, TO_TIMESTAMP('2026-04-18 23:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-04-19 00:00', 'YYYY-MM-DD HH24:MI'), 5000, 30000.00);
+INSERT INTO Apresentacao (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (8, 9, TO_TIMESTAMP('2026-06-12 21:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-06-12 22:45', 'YYYY-MM-DD HH24:MI'), 35000, 180000.00);
+INSERT INTO Apresentacao (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (9, 23, TO_TIMESTAMP('2026-07-05 22:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-07-05 23:59', 'YYYY-MM-DD HH24:MI'), 55000, 400000.00);
+INSERT INTO Apresentacao (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (4, 13, TO_TIMESTAMP('2026-01-30 20:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-01-30 21:30', 'YYYY-MM-DD HH24:MI'), 45000, 90000.00);
+INSERT INTO Apresentacao (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (14, 15, TO_TIMESTAMP('2026-10-10 02:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-10-10 04:00', 'YYYY-MM-DD HH24:MI'), 60000, 250000.00);
+INSERT INTO Apresentacao (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (10, 19, TO_TIMESTAMP('2026-09-28 20:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-09-28 22:00', 'YYYY-MM-DD HH24:MI'), 50000, 70000.00);
+INSERT INTO Apresentacao (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (7, 2, TO_TIMESTAMP('2026-09-11 23:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-09-12 00:30', 'YYYY-MM-DD HH24:MI'), 40000, 150000.00);
+INSERT INTO Apresentacao (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (13, 30, TO_TIMESTAMP('2026-05-20 18:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-05-20 19:30', 'YYYY-MM-DD HH24:MI'), 3000, 15000.00);
+
+COMMIT;
