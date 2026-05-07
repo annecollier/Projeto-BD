@@ -13,12 +13,10 @@ DROP TABLE Equipamento_de_palco CASCADE CONSTRAINTS;
 DROP TABLE Palco                CASCADE CONSTRAINTS;
 DROP TABLE Festival             CASCADE CONSTRAINTS;
 DROP TABLE Instrumento          CASCADE CONSTRAINTS;
-
 DROP TABLE Vocalista            CASCADE CONSTRAINTS;
 DROP TABLE Instrumentista       CASCADE CONSTRAINTS;
 DROP TABLE Compositor           CASCADE CONSTRAINTS;
 DROP TABLE Produtor             CASCADE CONSTRAINTS;
-
 DROP TABLE Telefone_membro      CASCADE CONSTRAINTS;
 DROP TABLE Membro               CASCADE CONSTRAINTS;
 DROP TABLE Banda                CASCADE CONSTRAINTS;
@@ -74,14 +72,9 @@ CREATE TABLE Banda (
 );
 
 CREATE TABLE Membro (
-    cpf              CHAR(11)        NOT NULL,
-    nome             VARCHAR2(100)   NOT NULL,
-    banda            NUMBER(10)      NOT NULL,
-
-    eh_produtor       CHAR(1) DEFAULT 'N' NOT NULL,
-    eh_compositor     CHAR(1) DEFAULT 'N' NOT NULL,
-    eh_instrumentista CHAR(1) DEFAULT 'N' NOT NULL,
-    eh_vocalista      CHAR(1) DEFAULT 'N' NOT NULL,
+    cpf     CHAR(11)        NOT NULL,
+    nome    VARCHAR2(100)   NOT NULL,
+    banda   NUMBER(10)      NOT NULL,
 
     CONSTRAINT pk_membro PRIMARY KEY (cpf),
 
@@ -90,20 +83,7 @@ CREATE TABLE Membro (
     CONSTRAINT fk_membro_banda FOREIGN KEY (banda)
         REFERENCES Banda(id_banda),
 
-    CONSTRAINT chk_membro_cpf CHECK (REGEXP_LIKE(cpf, '^[0-9]{11}$')),
-
-    CONSTRAINT chk_membro_produtor CHECK (eh_produtor IN ('S', 'N')),
-
-    CONSTRAINT chk_membro_compositor CHECK (eh_compositor IN ('S', 'N')),
-
-    CONSTRAINT chk_membro_instrumentista CHECK (eh_instrumentista IN ('S', 'N')),
-
-    CONSTRAINT chk_membro_vocalista CHECK (eh_vocalista IN ('S', 'N')),
-
-    CONSTRAINT chk_membro_tipo_obrigatorio CHECK (
-        eh_instrumentista = 'S'
-        OR eh_vocalista = 'S'
-    )
+    CONSTRAINT chk_membro_cpf CHECK (REGEXP_LIKE(cpf, '^[0-9]{11}$'))
 );
 
 ALTER TABLE Banda
@@ -123,6 +103,46 @@ CREATE TABLE Telefone_membro (
         ON DELETE CASCADE,
 
     CONSTRAINT chk_telefone CHECK (REGEXP_LIKE(telefone, '^[0-9]{10,11}$'))
+);
+
+CREATE TABLE Produtor (
+    cpf_produtor CHAR(11) NOT NULL,
+
+    CONSTRAINT pk_produtor PRIMARY KEY (cpf_produtor),
+
+    CONSTRAINT fk_produtor_membro FOREIGN KEY (cpf_produtor)
+        REFERENCES Membro(cpf)
+        ON DELETE CASCADE
+);
+
+CREATE TABLE Compositor (
+    cpf_compositor CHAR(11) NOT NULL,
+
+    CONSTRAINT pk_compositor PRIMARY KEY (cpf_compositor),
+
+    CONSTRAINT fk_compositor_membro FOREIGN KEY (cpf_compositor)
+        REFERENCES Membro(cpf)
+        ON DELETE CASCADE
+);
+
+CREATE TABLE Instrumentista (
+    cpf_instrumentista CHAR(11) NOT NULL,
+
+    CONSTRAINT pk_instrumentista PRIMARY KEY (cpf_instrumentista),
+
+    CONSTRAINT fk_instrumentista_membro FOREIGN KEY (cpf_instrumentista)
+        REFERENCES Membro(cpf)
+        ON DELETE CASCADE
+);
+
+CREATE TABLE Vocalista (
+    cpf_vocalista CHAR(11) NOT NULL,
+
+    CONSTRAINT pk_vocalista PRIMARY KEY (cpf_vocalista),
+
+    CONSTRAINT fk_vocalista_membro FOREIGN KEY (cpf_vocalista)
+        REFERENCES Membro(cpf)
+        ON DELETE CASCADE
 );
 
 CREATE TABLE Instrumento (
