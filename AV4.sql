@@ -38,7 +38,7 @@ FROM PALCO1 P INNER JOIN APRESENTACAO1 A ON A.palco = P.id_palco inner join FEST
 GROUP BY P.nome_palco, F.nome_festival HAVING COUNT(*) > 3
 ORDER BY QUANTIDADE_SHOWS DESC;
 
--- ORDER BY
+-- ORDER BY e OUTER JOIN
 SELECT M.nome, I.tipo
 FROM MEMBRO1 M LEFT OUTER JOIN INSTRUMENTO1 I 
 ON I.MEMBRO = M.CPF 
@@ -112,7 +112,36 @@ WHERE marca LIKE 'Gibson%'
     ON M.cpf = I.membro
 ORDER BY I.marca;
 
+--SUBCONSULTA COM IN
+SELECT M.nome, B.nome_banda 
+FROM Membro1 M 
+inner join Banda1 B 
+on M.banda = B.id_banda 
+WHERE B.id_banda 
+in (SELECT banda FROM Apresentacao1 A);
 
+-- SUBCONSULTA COM All
+-- Pegar as informações da apresentação com maior audiencia
+SELECT B.nome_banda, P.nome_palco, F.NOME_FESTIVAL, A.HORA_INICIO, A.HORA_FIM, A.PUBLICO_PRESENTE, A.CACHE_COMBINADO FROM Apresentacao1 A
+INNER JOIN Banda1 B ON A.banda = B.id_banda
+INNER JOIN Palco1 P ON A.palco = P.id_palco 
+INNER JOIN Festival1 F on F.id_festival = P.festival 
+WHERE A.publico_presente >= ALL (
+    SELECT publico_presente 
+    FROM Apresentacao1
+);
+
+-- Subconsulta com Any
+SELECT B.nome_banda, B.genero, A.cache_combinado
+FROM Banda1 B
+INNER JOIN Apresentacao1 A ON B.id_banda = A.banda
+WHERE B.genero != 'Sertanejo' 
+  AND A.cache_combinado > ANY (
+      SELECT cache_combinado 
+      FROM Apresentacao1 A
+      INNER JOIN Banda1 B ON A.banda = B.id_banda
+      WHERE B.genero = 'Sertanejo'
+  );
 
 
 
