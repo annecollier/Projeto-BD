@@ -19,12 +19,13 @@ WHERE genero in ('Rock', 'Metal', 'Punk')
 -- ###ACG, SUBQUERY RELACIONAL###O
 -- Isso a gente já usa subquery com relacional e AVG tb, mas acho que seria melhor se a gente filtrasse por festival tambem, sei lá,
 -- talvez fazer por percentual de preenchimento do respectivo palco, algo assim
+-- Isso mostra as bandas que tiveram população maior que a media
 SELECT B.nome_banda, F.NOME_FESTIVAL, A.publico_presente
-FROM BANDA1 B, Apresentacao111 A, FESTIVAL1 F, PALCO1 P 
+FROM BANDA1 B, Apresentacao1 A, FESTIVAL1 F, PALCO1 P 
 WHERE B.id_banda = A.banda 
 AND A.Palco = P.id_palco
 AND P.festival = F.id_festival
-AND A.publico_presente > (SELECT AVG(publico_presente) FROM Apresentacao111) ORDER BY A.publico_presente DESC;
+AND A.publico_presente > (SELECT AVG(publico_presente) FROM Apresentacao1) ORDER BY A.publico_presente DESC;
 -- Gera o público por gênero musical
 -- COUNT, SUM e GROUP BY
 SELECT B.genero, COUNT(DISTINCT B.id_banda) AS quantidade_de_bandas, SUM(A.publico_presente) AS total_publico_gerado
@@ -143,7 +144,6 @@ WHERE B.genero != 'Sertanejo'
       WHERE B.genero = 'Sertanejo'
   );
 
-
 -- IS NULL
 SELECT B.nome_banda, B.genero
 FROM Banda1 B
@@ -159,53 +159,55 @@ WHERE B.madrinha IS NULL;
 
 
 
-INSERT INTO Apresentacao11 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (8, 2, TO_TIMESTAMP('2026-09-12 20:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-09-12 21:30', 'YYYY-MM-DD HH24:MI'), 35000, 140000.00);
-INSERT INTO Apresentacao11 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (2, 1, TO_TIMESTAMP('2026-09-15 19:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-09-15 20:30', 'YYYY-MM-DD HH24:MI'), 60000, 200000.00);
-INSERT INTO Apresentacao11 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (4, 2, TO_TIMESTAMP('2026-09-18 18:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-09-18 19:30', 'YYYY-MM-DD HH24:MI'), 25000, 95000.00);
-
-INSERT INTO Apresentacao11 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (8, 3, TO_TIMESTAMP('2026-03-26 21:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-03-26 22:30', 'YYYY-MM-DD HH24:MI'), 45000, 160000.00);
-INSERT INTO Apresentacao11 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (14, 4, TO_TIMESTAMP('2026-03-27 22:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-03-27 23:59', 'YYYY-MM-DD HH24:MI'), 20000, 180000.00);
-
-INSERT INTO Apresentacao11 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (5, 5, TO_TIMESTAMP('2026-02-15 22:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-02-15 23:30', 'YYYY-MM-DD HH24:MI'), 15000, 75000.00);
-INSERT INTO Apresentacao11 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (7, 6, TO_TIMESTAMP('2026-02-16 23:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-02-17 00:30', 'YYYY-MM-DD HH24:MI'), 30000, 150000.00);
-
-INSERT INTO Apresentacao11 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (1, 7, TO_TIMESTAMP('2026-04-19 23:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-04-20 00:30', 'YYYY-MM-DD HH24:MI'), 8000, 90000.00);
-INSERT INTO Apresentacao11 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (11, 8, TO_TIMESTAMP('2026-04-19 20:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-04-19 21:30', 'YYYY-MM-DD HH24:MI'), 5000, 60000.00);
-
-INSERT INTO Apresentacao11 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (2, 9, TO_TIMESTAMP('2026-06-12 18:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-06-12 19:30', 'YYYY-MM-DD HH24:MI'), 38000, 150000.00);
-INSERT INTO Apresentacao11 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (7, 10, TO_TIMESTAMP('2026-06-12 20:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-06-12 21:30', 'YYYY-MM-DD HH24:MI'), 15000, 120000.00);
-
-INSERT INTO Apresentacao11 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (10, 11, TO_TIMESTAMP('2026-07-25 22:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-07-25 23:30', 'YYYY-MM-DD HH24:MI'), 48000, 80000.00);
-INSERT INTO Apresentacao11 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (11, 12, TO_TIMESTAMP('2026-07-26 20:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-07-26 21:30', 'YYYY-MM-DD HH24:MI'), 18000, 65000.00);
-
-INSERT INTO Apresentacao11 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (9, 13, TO_TIMESTAMP('2026-01-31 22:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-01-31 23:30', 'YYYY-MM-DD HH24:MI'), 58000, 350000.00);
-INSERT INTO Apresentacao11 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (3, 14, TO_TIMESTAMP('2026-01-31 01:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-01-31 03:00', 'YYYY-MM-DD HH24:MI'), 25000, 220000.00);
-
-INSERT INTO Apresentacao11 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (3, 15, TO_TIMESTAMP('2026-10-11 23:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-10-12 01:00', 'YYYY-MM-DD HH24:MI'), 75000, 400000.00);
-INSERT INTO Apresentacao11 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (14, 16, TO_TIMESTAMP('2026-10-12 00:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-10-12 02:00', 'YYYY-MM-DD HH24:MI'), 30000, 190000.00);
-
-INSERT INTO Apresentacao11 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (5, 17, TO_TIMESTAMP('2026-11-20 23:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-11-21 00:30', 'YYYY-MM-DD HH24:MI'), 9500, 70000.00);
-INSERT INTO Apresentacao11 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (12, 18, TO_TIMESTAMP('2026-11-21 20:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-11-21 21:00', 'YYYY-MM-DD HH24:MI'), 2500, 35000.00);
 
 
-INSERT INTO Apresentacao11 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (9, 19, TO_TIMESTAMP('2026-09-29 22:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-09-29 23:30', 'YYYY-MM-DD HH24:MI'), 65000, 320000.00);
-INSERT INTO Apresentacao11 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (4, 20, TO_TIMESTAMP('2026-09-28 18:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-09-28 19:30', 'YYYY-MM-DD HH24:MI'), 28000, 85000.00);
+INSERT INTO Apresentacao1 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (8, 2, TO_TIMESTAMP('2026-09-12 20:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-09-12 21:30', 'YYYY-MM-DD HH24:MI'), 35000, 140000.00);
+INSERT INTO Apresentacao1 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (2, 1, TO_TIMESTAMP('2026-09-15 19:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-09-15 20:30', 'YYYY-MM-DD HH24:MI'), 60000, 200000.00);
+INSERT INTO Apresentacao1 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (4, 2, TO_TIMESTAMP('2026-09-18 18:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-09-18 19:30', 'YYYY-MM-DD HH24:MI'), 25000, 95000.00);
 
-INSERT INTO Apresentacao11 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (6, 21, TO_TIMESTAMP('2026-05-15 19:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-05-15 20:30', 'YYYY-MM-DD HH24:MI'), 42000, 130000.00);
-INSERT INTO Apresentacao11 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (15, 22, TO_TIMESTAMP('2026-05-15 17:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-05-15 18:00', 'YYYY-MM-DD HH24:MI'), 9000, 45000.00);
+INSERT INTO Apresentacao1 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (8, 3, TO_TIMESTAMP('2026-03-26 21:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-03-26 22:30', 'YYYY-MM-DD HH24:MI'), 45000, 160000.00);
+INSERT INTO Apresentacao1 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (14, 4, TO_TIMESTAMP('2026-03-27 22:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-03-27 23:59', 'YYYY-MM-DD HH24:MI'), 20000, 180000.00);
 
-INSERT INTO Apresentacao11 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (10, 23, TO_TIMESTAMP('2026-07-06 20:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-07-06 21:30', 'YYYY-MM-DD HH24:MI'), 50000, 95000.00);
-INSERT INTO Apresentacao11 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (3, 24, TO_TIMESTAMP('2026-07-06 23:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-07-07 01:00', 'YYYY-MM-DD HH24:MI'), 20000, 250000.00);
+INSERT INTO Apresentacao1 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (5, 5, TO_TIMESTAMP('2026-02-15 22:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-02-15 23:30', 'YYYY-MM-DD HH24:MI'), 15000, 75000.00);
+INSERT INTO Apresentacao1 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (7, 6, TO_TIMESTAMP('2026-02-16 23:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-02-17 00:30', 'YYYY-MM-DD HH24:MI'), 30000, 150000.00);
 
-INSERT INTO Apresentacao11 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (2, 25, TO_TIMESTAMP('2026-01-20 22:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-01-20 23:30', 'YYYY-MM-DD HH24:MI'), 48000, 160000.00);
-INSERT INTO Apresentacao11 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (7, 26, TO_TIMESTAMP('2026-01-21 21:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-01-21 22:30', 'YYYY-MM-DD HH24:MI'), 19000, 140000.00);
+INSERT INTO Apresentacao1 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (1, 7, TO_TIMESTAMP('2026-04-19 23:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-04-20 00:30', 'YYYY-MM-DD HH24:MI'), 8000, 90000.00);
+INSERT INTO Apresentacao1 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (11, 8, TO_TIMESTAMP('2026-04-19 20:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-04-19 21:30', 'YYYY-MM-DD HH24:MI'), 5000, 60000.00);
 
-INSERT INTO Apresentacao11 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (8, 27, TO_TIMESTAMP('2026-10-16 22:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-10-16 23:30', 'YYYY-MM-DD HH24:MI'), 38000, 130000.00);
-INSERT INTO Apresentacao11 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (11, 28, TO_TIMESTAMP('2026-10-17 20:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-10-17 21:30', 'YYYY-MM-DD HH24:MI'), 12000, 70000.00);
-INSERT INTO Apresentacao11 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (2, 27, TO_TIMESTAMP('2026-10-15 21:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-10-15 22:30', 'YYYY-MM-DD HH24:MI'), 35000, 145000.00);
+INSERT INTO Apresentacao1 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (2, 9, TO_TIMESTAMP('2026-06-12 18:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-06-12 19:30', 'YYYY-MM-DD HH24:MI'), 38000, 150000.00);
+INSERT INTO Apresentacao1 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (7, 10, TO_TIMESTAMP('2026-06-12 20:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-06-12 21:30', 'YYYY-MM-DD HH24:MI'), 15000, 120000.00);
 
-INSERT INTO Apresentacao11 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (13, 29, TO_TIMESTAMP('2026-05-21 20:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-05-21 21:30', 'YYYY-MM-DD HH24:MI'), 9000, 20000.00);
-INSERT INTO Apresentacao11 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (13, 30, TO_TIMESTAMP('2026-05-22 19:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-05-22 20:30', 'YYYY-MM-DD HH24:MI'), 4500, 15000.00);
+INSERT INTO Apresentacao1 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (10, 11, TO_TIMESTAMP('2026-07-25 22:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-07-25 23:30', 'YYYY-MM-DD HH24:MI'), 48000, 80000.00);
+INSERT INTO Apresentacao1 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (11, 12, TO_TIMESTAMP('2026-07-26 20:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-07-26 21:30', 'YYYY-MM-DD HH24:MI'), 18000, 65000.00);
+
+INSERT INTO Apresentacao1 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (9, 13, TO_TIMESTAMP('2026-01-31 22:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-01-31 23:30', 'YYYY-MM-DD HH24:MI'), 58000, 350000.00);
+INSERT INTO Apresentacao1 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (3, 14, TO_TIMESTAMP('2026-01-31 01:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-01-31 03:00', 'YYYY-MM-DD HH24:MI'), 25000, 220000.00);
+
+INSERT INTO Apresentacao1 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (3, 15, TO_TIMESTAMP('2026-10-11 23:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-10-12 01:00', 'YYYY-MM-DD HH24:MI'), 75000, 400000.00);
+INSERT INTO Apresentacao1 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (14, 16, TO_TIMESTAMP('2026-10-12 00:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-10-12 02:00', 'YYYY-MM-DD HH24:MI'), 30000, 190000.00);
+
+INSERT INTO Apresentacao1 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (5, 17, TO_TIMESTAMP('2026-11-20 23:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-11-21 00:30', 'YYYY-MM-DD HH24:MI'), 9500, 70000.00);
+INSERT INTO Apresentacao1 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (12, 18, TO_TIMESTAMP('2026-11-21 20:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-11-21 21:00', 'YYYY-MM-DD HH24:MI'), 2500, 35000.00);
+
+
+INSERT INTO Apresentacao1 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (9, 19, TO_TIMESTAMP('2026-09-29 22:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-09-29 23:30', 'YYYY-MM-DD HH24:MI'), 65000, 320000.00);
+INSERT INTO Apresentacao1 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (4, 20, TO_TIMESTAMP('2026-09-28 18:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-09-28 19:30', 'YYYY-MM-DD HH24:MI'), 28000, 85000.00);
+
+INSERT INTO Apresentacao1 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (6, 21, TO_TIMESTAMP('2026-05-15 19:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-05-15 20:30', 'YYYY-MM-DD HH24:MI'), 42000, 130000.00);
+INSERT INTO Apresentacao1 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (15, 22, TO_TIMESTAMP('2026-05-15 17:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-05-15 18:00', 'YYYY-MM-DD HH24:MI'), 9000, 45000.00);
+
+INSERT INTO Apresentacao1 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (10, 23, TO_TIMESTAMP('2026-07-06 20:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-07-06 21:30', 'YYYY-MM-DD HH24:MI'), 50000, 95000.00);
+INSERT INTO Apresentacao1 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (3, 24, TO_TIMESTAMP('2026-07-06 23:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-07-07 01:00', 'YYYY-MM-DD HH24:MI'), 20000, 250000.00);
+
+INSERT INTO Apresentacao1 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (2, 25, TO_TIMESTAMP('2026-01-20 22:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-01-20 23:30', 'YYYY-MM-DD HH24:MI'), 48000, 160000.00);
+INSERT INTO Apresentacao1 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (7, 26, TO_TIMESTAMP('2026-01-21 21:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-01-21 22:30', 'YYYY-MM-DD HH24:MI'), 19000, 140000.00);
+
+INSERT INTO Apresentacao1 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (8, 27, TO_TIMESTAMP('2026-10-16 22:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-10-16 23:30', 'YYYY-MM-DD HH24:MI'), 38000, 130000.00);
+INSERT INTO Apresentacao1 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (11, 28, TO_TIMESTAMP('2026-10-17 20:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-10-17 21:30', 'YYYY-MM-DD HH24:MI'), 12000, 70000.00);
+INSERT INTO Apresentacao1 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (2, 27, TO_TIMESTAMP('2026-10-15 21:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-10-15 22:30', 'YYYY-MM-DD HH24:MI'), 35000, 145000.00);
+
+INSERT INTO Apresentacao1 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (13, 29, TO_TIMESTAMP('2026-05-21 20:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-05-21 21:30', 'YYYY-MM-DD HH24:MI'), 9000, 20000.00);
+INSERT INTO Apresentacao1 (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (13, 30, TO_TIMESTAMP('2026-05-22 19:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-05-22 20:30', 'YYYY-MM-DD HH24:MI'), 4500, 15000.00);
 
 COMMIT;
 
