@@ -144,7 +144,10 @@ WHERE B.genero != 'Sertanejo'
   );
 
 
-
+-- IS NULL
+SELECT B.nome_banda, B.genero
+FROM Banda1 B
+WHERE B.madrinha IS NULL;
 
 
 
