@@ -158,7 +158,7 @@ INNER JOIN Palco1 p ON a.palco = p.id_palco
 INNER JOIN Festival1 f ON p.festival = f.id_festival;
 
 SELECT * FROM vw_lineup_festival
-ORDER BY Inicio ASC, Palco ASC;
+ORDER BY Nome_Festival ASC, Inicio ASC, Palco ASC;
 
 
 
