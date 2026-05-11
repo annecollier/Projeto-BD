@@ -150,14 +150,15 @@ FROM Banda1 B
 WHERE B.madrinha IS NULL;
 
 
+CREATE VIEW lineup AS
+SELECT f.nome_festival AS Nome_Festival, p.nome_palco AS Palco, b.nome_banda AS Banda, a.hora_inicio AS Inicio, a.hora_fim AS Fim
+FROM Apresentacao1 a
+INNER JOIN Banda1 b ON a.banda = b.id_banda
+INNER JOIN Palco1 p ON a.palco = p.id_palco
+INNER JOIN Festival1 f ON p.festival = f.id_festival;
 
-
-
-
-
-
-
-
+SELECT * FROM vw_lineup_festival
+ORDER BY Inicio ASC, Palco ASC;
 
 
 
