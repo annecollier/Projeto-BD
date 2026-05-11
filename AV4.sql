@@ -150,6 +150,8 @@ FROM Banda1 B
 WHERE B.madrinha IS NULL;
 
 
+-- Cria view da lineup do festival
+
 CREATE VIEW lineup AS
 SELECT f.nome_festival AS Nome_Festival, p.nome_palco AS Palco, b.nome_banda AS Banda, a.hora_inicio AS Inicio, a.hora_fim AS Fim
 FROM Apresentacao1 a
@@ -159,6 +161,34 @@ INNER JOIN Festival1 f ON p.festival = f.id_festival;
 
 SELECT * FROM lineup
 ORDER BY Nome_Festival ASC, Inicio ASC, Palco ASC;
+
+-- MINUS
+
+SELECT A.nome_banda
+FROM Apresentacao1 A
+WHERE A.id_festival == 1
+MINUS
+SELECT A.nome_banda
+FROM Apresentacao1 A
+WHERE A.id_festival == 2;
+
+--INTERSECT
+
+SELECT B.genero
+FROM banda1 B
+INNER JOIN Apresentacao1 A ON B.id_banda = A.banda
+INNER JOIN palco1 P ON A.Palco = P.id_palco
+INNER JOIN festival1 F ON P.festival = F.id_festival
+WHERE F.id_festival = 1
+
+INTERSECT
+
+SELECT B.genero
+FROM banda1 B
+INNER JOIN Apresentacao1 A ON B.id_banda = A.banda
+INNER JOIN palco P ON A.Palco = P.id_palco
+INNER JOIN FESTIVAL1 F ON P.festival = F.id_festival
+WHERE F.id_festival = 15;
 
 
 
