@@ -1,4 +1,4 @@
-ALTER TABLE Palco RENAME COLUMN local TO novo_nome?;
+ALTER TABLE Palco RENAME COLUMN local TO local_palco;
 -- Listar os festivais realizados em recife
 -- lida com Where ####WHERE#####
 SELECT NOME_FESTIVAL, DATA_INICIO, DATA_FIM From festival WHERE LOCAL = 'Recife'
@@ -106,12 +106,39 @@ WHERE cache_combinado = (SELECT MIN(cache_combinado) FROM Apresentacao);
 
 
 --LIKE
-SELECT I.marca, M.nome
-FROM Instrumento I
-INNER JOIN Membro M
-WHERE marca LIKE 'Fender%'
-    ON M.cpf = I.membro
-ORDER BY I.marca;
+SELECT F.nome_festival,
+COUNT (A.banda) AS total_bandas,
+SUM(A.publico_presente) AS publico_total,
+SUM(A.cache_combinado) AS custo_com_caches
+FROM Festival F
+INNER JOIN
+PALCO P
+ON
+    F.id_festival = P.festival
+INNER JOIN
+Apresentacao A
+    ON P.id_palco = A.palco
+WHERE F.nome_festival LIKE '%Rock%' 
+  AND F.data_inicio BETWEEN '2023-01-01' AND '2023-12-31'
+GROUP BY F.nome_festival
+HAVING SUM(A.publico_presente) > 10000 
+ORDER BY custo_com_caches DESC;
+
+-- UPDATE
+ALTER TABLE Instrumento ADD Modelo VARCHAR2(50);
+
+UPDATE Instrumento
+SET Modelo = "Desconhecido"
+WHERE Modelo IS NULL;
+
+UPDATE Apresentacao
+SET cache_combinado = cache_combinado* 1.1
+WHERE Banda IN (
+SELECT Banda
+FROM Apresentacao
+ORDER BY publico_presente DESC
+LIMIT 5
+);
 
 --SUBCONSULTA COM IN
 SELECT M.nome, B.nome_banda 
