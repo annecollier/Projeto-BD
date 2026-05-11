@@ -157,7 +157,7 @@ INNER JOIN Banda1 b ON a.banda = b.id_banda
 INNER JOIN Palco1 p ON a.palco = p.id_palco
 INNER JOIN Festival1 f ON p.festival = f.id_festival;
 
-SELECT * FROM vw_lineup_festival
+SELECT * FROM lineup
 ORDER BY Nome_Festival ASC, Inicio ASC, Palco ASC;
 
 
