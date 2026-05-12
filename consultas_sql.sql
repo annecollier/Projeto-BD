@@ -241,7 +241,38 @@ INNER JOIN palco P ON A.Palco = P.id_palco
 INNER JOIN FESTIVAL F ON P.festival = F.id_festival
 WHERE F.id_festival = 15;
 
+--consulta de musicas que foram tocadas por mais bandas diferentes, mostrando o nome da música, o artista original e a quantidade de bandas diferentes que tocaram a música, ordenando pela quantidade de bandas em ordem decrescente
+CREATE VIEW vw_musicas_mais_tocadas AS
+SELECT 
+    M.nome AS nome_musica,
+    M.artista_original,
+    COUNT(DISTINCT Mem.banda) AS qtd_bandas_diferentes
+FROM Musica M
+INNER JOIN Canta C 
+    ON M.id_musica = C.musica
+INNER JOIN Membro Mem 
+    ON C.vocalista = Mem.cpf
+GROUP BY M.id_musica, M.nome, M.artista_original
+ORDER BY qtd_bandas_diferentes DESC;
 
+--seleciona o nome da música, o artista original e a duração das músicas que têm duração maior que todas as músicas do artista 'Nação Zumbi'
+SELECT nome, artista_original, duracao
+FROM Musica
+WHERE duracao > ALL (
+    SELECT duracao 
+    FROM Musica 
+    WHERE artista_original = 'Nação Zumbi'
+);
+
+--seleciona o nome da música, o artista original e a duração das músicas que têm duração maior que qualquer música do artista 'Queen'
+SELECT nome, artista_original, duracao
+FROM Musica
+WHERE artista_original != 'Skank' 
+  AND duracao > ANY (
+    SELECT duracao 
+    FROM Musica 
+    WHERE artista_original = 'Skank'
+);
 
 INSERT INTO Apresentacao (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (8, 2, TO_TIMESTAMP('2026-09-12 20:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-09-12 21:30', 'YYYY-MM-DD HH24:MI'), 35000, 140000.00);
 INSERT INTO Apresentacao (banda, palco, hora_inicio, hora_fim, publico_presente, cache_combinado) VALUES (2, 1, TO_TIMESTAMP('2026-09-15 19:00', 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP('2026-09-15 20:30', 'YYYY-MM-DD HH24:MI'), 60000, 200000.00);
