@@ -97,36 +97,29 @@ INNER JOIN (
     GROUP BY P.festival, B.genero
 ) Minimos ON Minimos.id_festival = Extremos.id_festival AND Minimos.total_ouvintes = Extremos.menor_publico;
 
--- banda com o maior cache combinado
+-- banda com o maior cache combinado 
 SELECT 
-    A.banda, 
+    B.nome_banda,
     A.cache_combinado AS maior_cache,
     P.nome_palco,
     F.nome_festival
 FROM Apresentacao A
-LEFT JOIN 
-Palco P 
+INNER JOIN Banda B
+    ON A.banda = B.id_banda
+LEFT JOIN Palco P 
     ON A.palco = P.id_palco
-LEFT JOIN 
-Festival F 
+LEFT JOIN Festival F 
     ON P.festival = F.id_festival
 WHERE A.cache_combinado = (SELECT MAX(cache_combinado) FROM Apresentacao);
 
 -- banda com o menor cache combinado
-SELECT 
-    A.banda, 
-    A.cache_combinado AS menor_cache,
-    P.nome_palco,
-    F.nome_festival
+SELECT DISTINCT
+    B.nome_banda,
+    A.cache_combinado AS menor_cache
 FROM Apresentacao A
-LEFT JOIN 
-Palco P 
-    ON A.palco = P.id_palco
-LEFT JOIN 
-Festival F 
-    ON P.festival = F.id_festival
+INNER JOIN Banda B 
+    ON A.banda = B.id_banda
 WHERE A.cache_combinado = (SELECT MIN(cache_combinado) FROM Apresentacao);
-
 
 
 --LIKE (filtra os festivais de rock realizados em 2023, mostrando o número de bandas, público total e custo total com caches)
@@ -143,7 +136,7 @@ INNER JOIN
 Apresentacao A
     ON P.id_palco = A.palco
 WHERE F.nome_festival LIKE '%Rock%' 
-  AND F.data_inicio BETWEEN '2023-01-01' AND '2023-12-31'
+  AND F.data_inicio BETWEEN DATE '2000-01-01' AND DATE '2026-12-31'
 GROUP BY F.nome_festival
 HAVING SUM(A.publico_presente) > 10000 
 ORDER BY custo_com_caches DESC;
@@ -215,13 +208,25 @@ ORDER BY Nome_Festival ASC, Inicio ASC, Palco ASC;
 
 -- MINUS (seleciona bandas que tocaram no festival 1 mas não tocaram no festival 2)
 
-SELECT A.nome_banda
+--Festival 1
+SELECT B.nome_banda
 FROM Apresentacao A
-WHERE A.id_festival == 1
+INNER JOIN Banda B 
+    ON A.banda = B.id_banda
+INNER JOIN Palco P 
+    ON A.palco = P.id_palco
+WHERE P.festival = 1
+
 MINUS
-SELECT A.nome_banda
+
+--Festival 2
+SELECT B.nome_banda
 FROM Apresentacao A
-WHERE A.id_festival == 2;
+INNER JOIN Banda B 
+    ON A.banda = B.id_banda
+INNER JOIN Palco P 
+    ON A.palco = P.id_palco
+WHERE P.festival = 2;
 
 --INTERSECT (seleciona os gêneros musicais que foram tocados tanto no festival 1 quanto no festival 15)
 
@@ -254,6 +259,10 @@ INNER JOIN Membro Mem
     ON C.vocalista = Mem.cpf
 GROUP BY M.id_musica, M.nome, M.artista_original
 ORDER BY qtd_bandas_diferentes DESC;
+
+SELECT *
+FROM vw_musicas_mais_tocadas
+ORDER BY qtd_bandas_diferentes DESC
 
 --seleciona o nome da música, o artista original e a duração das músicas que têm duração maior que todas as músicas do artista 'Nação Zumbi'
 SELECT nome, artista_original, duracao
