@@ -85,6 +85,8 @@ INSERT INTO Banda (id_banda, nome_banda, genero, rider_tecnico, lider, madrinha)
 INSERT INTO Banda (id_banda, nome_banda, genero, rider_tecnico, lider, madrinha) VALUES (15, 'Sarcofago', 'Metal', 'Rider Black Metal', NULL, 1);
 
 -- MEMBROS
+EXEC cadastrar_membro('67676767676', 'Betuca Xavier', 1, 'I');
+
 EXEC cadastrar_membro('11111111101', 'Andreas Kisser', 1, 'I');
 EXEC cadastrar_membro('11111111102', 'Derrick Green', 1, 'V');
 EXEC cadastrar_membro('11111111103', 'Eloy Casagrande', 1, 'I');
