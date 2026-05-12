@@ -1,7 +1,9 @@
 ALTER TABLE Palco RENAME COLUMN local TO local_palco;
 -- Listar os festivais realizados em recife
--- lida com Where ####WHERE#####
+
+-- (seleciona o nome do festival, data de início e data de fim dos festivais realizados em Recife)
 SELECT NOME_FESTIVAL, DATA_INICIO, DATA_FIM From festival WHERE LOCAL = 'Recife'
+
 -- Filtrar as bandas que tenham arrecadado entre 100000 e 200000 reais por apresentação 
 -- Lida com Inner join, Where, Between e Order By ####INNER JOIN, BETWEEN, ORDER BY#####
 SELECT B.nome_banda, A.cache_combinado, F.nome_festival 
@@ -11,14 +13,13 @@ INNER JOIN Palco P ON A.palco = P.id_palco
 INNER JOIN Festival F ON P.festival = F.id_festival
 WHERE A.cache_combinado BETWEEN 100000 AND 200000 
 ORDER BY A.cache_combinado ASC;
--- Filtrar as bandas de rock como um todo
--- Lida com Where e IN ####WHERE; IN ####
+
+-- Lida com Where e IN (seleciona o nome da banda e o gênero musical das bandas que se enquadram nos gêneros de rock, metal ou punk)
 SELECT nome_banda AS "Bandas de Rock", genero AS "Subgenero" 
 FROM BANDA 
 WHERE genero in ('Rock', 'Metal', 'Punk')
--- ###ACG, SUBQUERY RELACIONAL###O
--- Isso a gente já usa subquery com relacional e AVG tb, mas acho que seria melhor se a gente filtrasse por festival tambem, sei lá,
--- talvez fazer por percentual de preenchimento do respectivo palco, algo assim
+
+-- SUBQUERY RELACIONAL
 -- Isso mostra as bandas que tiveram população maior que a media
 SELECT B.nome_banda, F.NOME_FESTIVAL, A.publico_presente
 FROM BANDA B, Apresentacao A, FESTIVAL F, PALCO P 
@@ -26,26 +27,29 @@ WHERE B.id_banda = A.banda
 AND A.Palco = P.id_palco
 AND P.festival = F.id_festival
 AND A.publico_presente > (SELECT AVG(publico_presente) FROM Apresentacao) ORDER BY A.publico_presente DESC;
+
 -- Gera o público por gênero musical
--- COUNT, SUM e GROUP BY
+-- COUNT, SUM e GROUP BY (seleciona o gênero musical, a quantidade de bandas de cada gênero e o público total gerado por cada gênero, ordenando do maior para o menor público)
 SELECT B.genero, COUNT(DISTINCT B.id_banda) AS quantidade_de_bandas, SUM(A.publico_presente) AS total_publico_gerado
 FROM Banda B
 INNER JOIN Apresentacao A ON B.id_banda = A.banda
 GROUP BY B.genero
 ORDER BY total_publico_gerado DESC;
+
 -- Gera o nome dos palcos e seus respectivos festivais que tiveram mais de 3 shows
 SELECT P.nome_palco, F.nome_festival, COUNT(*) AS QUANTIDADE_SHOWS
 FROM PALCO P INNER JOIN APRESENTACAO A ON A.palco = P.id_palco inner join FESTIVAL F on F.id_festival = P.festival
 GROUP BY P.nome_palco, F.nome_festival HAVING COUNT(*) > 3
 ORDER BY QUANTIDADE_SHOWS DESC;
 
--- ORDER BY e OUTER JOIN
+-- ORDER BY e OUTER JOIN (gera o nome dos membros e o tipo de instrumento que tocam, ordenando por tipo de instrumento, e mostrando os membros que não tocam nenhum instrumento)
 SELECT M.nome, I.tipo
-FROM MEMBRO M LEFT OUTER JOIN INSTRUMENTO I 
-ON I.MEMBRO = M.CPF 
-ORDER BY TIPO;
+FROM Membro M 
+LEFT OUTER JOIN Instrumento I 
+    ON I.MEMBRO = M.CPF 
+ORDER BY tipo;
 
--- MAX e MIN 
+-- MAX e MIN (seleciona o gênero musical mais e menos ouvido em cada festival, juntamente com o público correspondente)
 SELECT 
     F.nome_festival,
     Maximos.genero AS genero_mais_ouvido,
@@ -93,19 +97,39 @@ INNER JOIN (
     GROUP BY P.festival, B.genero
 ) Minimos ON Minimos.id_festival = Extremos.id_festival AND Minimos.total_ouvintes = Extremos.menor_publico;
 
--- a gnt deixa os dois ss
---MAX E MIN talvez esteja muito simples, sera q reclamam se bem que é importante ter esses dados ne?
-SELECT banda, cache_combinado AS maior_cache
-FROM Apresentacao
-WHERE cache_combinado = (SELECT MAX(cache_combinado) FROM Apresentacao);
+-- banda com o maior cache combinado
+SELECT 
+    A.banda, 
+    A.cache_combinado AS maior_cache,
+    P.nome_palco,
+    F.nome_festival
+FROM Apresentacao A
+LEFT JOIN 
+Palco P 
+    ON A.palco = P.id_palco
+LEFT JOIN 
+Festival F 
+    ON P.festival = F.id_festival
+WHERE A.cache_combinado = (SELECT MAX(cache_combinado) FROM Apresentacao);
 
-SELECT banda, cache_combinado AS menor_cache
-FROM Apresentacao
-WHERE cache_combinado = (SELECT MIN(cache_combinado) FROM Apresentacao);
+-- banda com o menor cache combinado
+SELECT 
+    A.banda, 
+    A.cache_combinado AS menor_cache,
+    P.nome_palco,
+    F.nome_festival
+FROM Apresentacao A
+LEFT JOIN 
+Palco P 
+    ON A.palco = P.id_palco
+LEFT JOIN 
+Festival F 
+    ON P.festival = F.id_festival
+WHERE A.cache_combinado = (SELECT MIN(cache_combinado) FROM Apresentacao);
 
 
 
---LIKE
+--LIKE (filtra os festivais de rock realizados em 2023, mostrando o número de bandas, público total e custo total com caches)
 SELECT F.nome_festival,
 COUNT (A.banda) AS total_bandas,
 SUM(A.publico_presente) AS publico_total,
@@ -124,7 +148,7 @@ GROUP BY F.nome_festival
 HAVING SUM(A.publico_presente) > 10000 
 ORDER BY custo_com_caches DESC;
 
--- UPDATE
+-- UPDATE (atualiza o cache combinado das 5 maiores bandas que tocaram no festival de rock)
 ALTER TABLE Instrumento ADD Modelo VARCHAR2(50);
 
 UPDATE Instrumento
@@ -140,7 +164,7 @@ ORDER BY publico_presente DESC
 LIMIT 5
 );
 
---SUBCONSULTA COM IN
+--SUBCONSULTA COM IN (seleciona os membros das bandas que se apresentaram em algum festival)
 SELECT M.nome, B.nome_banda 
 FROM Membro M 
 inner join Banda B 
@@ -159,7 +183,7 @@ WHERE A.publico_presente >= ALL (
     FROM Apresentacao
 );
 
--- Subconsulta com Any
+-- Subconsulta com Any (seleciona as bandas que tiveram cache combinado maior que qualquer banda de sertanejo)
 SELECT B.nome_banda, B.genero, A.cache_combinado
 FROM Banda B
 INNER JOIN Apresentacao A ON B.id_banda = A.banda
@@ -171,7 +195,7 @@ WHERE B.genero != 'Sertanejo'
       WHERE B.genero = 'Sertanejo'
   );
 
--- IS NULL
+-- IS NULL (filtrar as bandas que não possuem madrinha)
 SELECT B.nome_banda, B.genero
 FROM Banda B
 WHERE B.madrinha IS NULL;
@@ -189,7 +213,7 @@ INNER JOIN Festival f ON p.festival = f.id_festival;
 SELECT * FROM lineup
 ORDER BY Nome_Festival ASC, Inicio ASC, Palco ASC;
 
--- MINUS
+-- MINUS (seleciona bandas que tocaram no festival 1 mas não tocaram no festival 2)
 
 SELECT A.nome_banda
 FROM Apresentacao A
@@ -199,7 +223,7 @@ SELECT A.nome_banda
 FROM Apresentacao A
 WHERE A.id_festival == 2;
 
---INTERSECT
+--INTERSECT (seleciona os gêneros musicais que foram tocados tanto no festival 1 quanto no festival 15)
 
 SELECT B.genero
 FROM banda B
