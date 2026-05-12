@@ -83,7 +83,7 @@ INSERT INTO Banda (id_banda, nome_banda, genero, rider_tecnico, lider, madrinha)
 INSERT INTO Banda (id_banda, nome_banda, genero, rider_tecnico, lider, madrinha) VALUES (13, 'B.B. King Cover', 'Blues', 'Rider Blues Vintage', NULL, NULL);
 INSERT INTO Banda (id_banda, nome_banda, genero, rider_tecnico, lider, madrinha) VALUES (14, 'Vintage Culture', 'Eletronico', 'Rider House Music', NULL, 3);
 INSERT INTO Banda (id_banda, nome_banda, genero, rider_tecnico, lider, madrinha) VALUES (15, 'Sarcofago', 'Metal', 'Rider Black Metal', NULL, 1);
-
+-- NAO RODAR INSERT MEMBRO/INSTRUMENTISTA, USAR O EXEC PROCEDURE cadastrar_membro PRA GARANTIR AS REGRAS DE NEGOCIO DAS ESPECIALIDADES DOS MEMBROS
 -- MEMBROS
 EXEC cadastrar_membro('67676767676', 'Betuca Xavier', 1, 'I');
 
