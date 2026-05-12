@@ -107,3 +107,5 @@ SELECT genero FROM Banda WHERE id_banda IN (SELECT banda FROM Apresentacao WHERE
 -- [26] GRANT / REVOKE
 GRANT SELECT ON lineup TO PUBLIC;
 REVOKE SELECT ON lineup FROM PUBLIC;
+
+INSERT INTO Instrumento (membro, tipo, marca) VALUES ('67676767676', 'Guitarra', 'Fender');
