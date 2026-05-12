@@ -45,9 +45,11 @@ ORDER BY QUANTIDADE_SHOWS DESC;
 -- ORDER BY e OUTER JOIN (gera o nome dos membros e o tipo de instrumento que tocam, ordenando por tipo de instrumento, e mostrando os membros que não tocam nenhum instrumento)
 SELECT M.nome, I.tipo
 FROM Membro M 
+INNER JOIN Instrumentista Inst 
+    ON M.CPF = Inst.CPF_INSTRUMENTISTA
 LEFT OUTER JOIN Instrumento I 
-    ON I.MEMBRO = M.CPF 
-ORDER BY tipo;
+    ON Inst.CPF_INSTRUMENTISTA = I.MEMBRO 
+ORDER BY I.tipo;
 
 -- MAX e MIN (seleciona o gênero musical mais e menos ouvido em cada festival, juntamente com o público correspondente)
 SELECT 
