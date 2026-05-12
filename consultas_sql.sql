@@ -43,10 +43,18 @@ WHERE id_equipamento NOT IN (SELECT equipamento FROM Utiliza);
 SELECT NOME_FESTIVAL, DATA_INICIO, DATA_FIM From festival WHERE LOCAL = 'Recife';
 
 -- [7] BETWEEN e [21] ORDER BY
-SELECT B.nome_banda, A.cache_combinado, F.nome_festival 
-FROM Banda B 
-INNER JOIN Apresentacao A ON B.id_banda = A.banda 
-WHERE A.cache_combinado BETWEEN 100000 AND 200000 
+SELECT 
+    B.nome_banda, 
+    A.cache_combinado, 
+    F.nome_festival
+FROM Banda B
+INNER JOIN Apresentacao A 
+    ON B.id_banda = A.banda
+INNER JOIN Palco P 
+    ON A.palco = P.id_palco
+INNER JOIN Festival F 
+    ON P.festival = F.id_festival
+WHERE A.cache_combinado BETWEEN 100000 AND 200000
 ORDER BY A.cache_combinado ASC;
 
 -- [8] IN
@@ -84,8 +92,18 @@ SELECT MAX(cache_combinado), MIN(cache_combinado), AVG(publico_presente) FROM Ap
 -- 5. SUBCONSULTAS E OPERAÇÕES DE CONJUNTO
 
 -- [17] SUBCONSULTA COM OPERADOR RELACIONAL (>)
-SELECT nome_banda FROM Apresentacao A JOIN Banda B ON A.banda = B.id_banda
-WHERE publico_presente > (SELECT AVG(publico_presente) FROM Apresentacao);
+SELECT DISTINCT 
+    B.nome_banda, 
+    F.nome_festival,
+    (SELECT ROUND(AVG(publico_presente)) FROM Apresentacao) AS media_geral_publico
+FROM Apresentacao A
+JOIN Banda B 
+    ON A.banda = B.id_banda
+INNER JOIN Palco P 
+    ON A.palco = P.id_palco
+INNER JOIN Festival F 
+    ON P.festival = F.id_festival
+WHERE A.publico_presente > (SELECT ROUND(AVG(publico_presente)) FROM Apresentacao);
 
 -- [18] SUBCONSULTA COM IN
 SELECT nome FROM Membro WHERE banda IN (SELECT banda FROM Apresentacao);
