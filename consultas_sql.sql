@@ -248,6 +248,14 @@ INNER JOIN palco P ON A.Palco = P.id_palco
 INNER JOIN FESTIVAL F ON P.festival = F.id_festival
 WHERE F.id_festival = 15;
 
+--Delete
+DELETE FROM Equipamento_de_palco
+WHERE id_equipamento NOT IN (SELECT equipamento FROM Utiliza);
+
+-- CREATE INDEX
+CREATE INDEX idx_banda_nome ON Banda (nome_banda);
+CREATE INDEX idx_apres_cache ON Apresentacao (cache_combinado);
+
 --consulta de musicas que foram tocadas por mais bandas diferentes, mostrando o nome da música, o artista original e a quantidade de bandas diferentes que tocaram a música, ordenando pela quantidade de bandas em ordem decrescente
 CREATE VIEW vw_musicas_mais_tocadas AS
 SELECT 
