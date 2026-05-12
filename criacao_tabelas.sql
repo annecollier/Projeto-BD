@@ -100,6 +100,7 @@ CREATE TABLE Membro (
     )
 );
 
+
 CREATE TABLE Instrumentista (
     cpf_membro          CHAR(11)        NOT NULL,
     
@@ -136,6 +137,40 @@ CREATE TABLE Telefone_membro (
         ON DELETE CASCADE,
     CONSTRAINT chk_telefone CHECK (REGEXP_LIKE(telefone, '^[0-9]{10,11}$'))
 );
+
+/*
+ANTIGO
+
+CREATE TABLE Instrumento (
+
+    membro      CHAR(11)       NOT NULL,
+
+    cod_inv     NUMBER(10)     NOT NULL,
+
+    tipo        VARCHAR2(60)   NOT NULL,
+
+    marca       VARCHAR2(60),  NOT NULL,
+
+
+
+    CONSTRAINT pk_instrumento PRIMARY KEY (membro, cod_inv),
+
+    CONSTRAINT fk_instrumento_membro FOREIGN KEY (membro)
+
+        REFERENCES Membro(cpf)
+
+        ON DELETE CASCADE,
+
+    CONSTRAINT chk_instrumento_tipo CHECK (tipo IN (
+
+        'Guitarra', 'Baixo', 'Bateria', 'Teclado', 'Violao', 'Contrabaixo',
+
+        'Saxofone', 'Trompete', 'Flauta', 'Violino', 'Percussao', 'Outro'
+
+    ))
+
+);
+*/
 
 
 CREATE TABLE Instrumento (
