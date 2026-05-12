@@ -85,52 +85,65 @@ INSERT INTO Banda (id_banda, nome_banda, genero, rider_tecnico, lider, madrinha)
 INSERT INTO Banda (id_banda, nome_banda, genero, rider_tecnico, lider, madrinha) VALUES (15, 'Sarcofago', 'Metal', 'Rider Black Metal', NULL, 1);
 
 -- MEMBROS
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('11111111101', 'Andreas Kisser', 1, 'N', 'S', 'S', 'N');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('11111111102', 'Derrick Green', 1, 'N', 'N', 'N', 'S');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('11111111103', 'Eloy Casagrande', 1, 'N', 'N', 'S', 'N');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('22222222201', 'Samuel Rosa', 2, 'N', 'S', 'S', 'S');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('22222222202', 'Lelo Zaneti', 2, 'N', 'N', 'S', 'N');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('22222222203', 'Henrique Portugal', 2, 'S', 'N', 'S', 'N');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('33333333301', 'Alok Petrillo', 3, 'S', 'S', 'S', 'N');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('33333333302', 'Bhaskar Petrillo', 3, 'S', 'S', 'S', 'N');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('33333333303', 'Roadie Alok', 3, 'N', 'N', 'S', 'N');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('44444444401', 'Alexandre Carlo', 4, 'N', 'S', 'S', 'S');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('44444444402', 'Luis Mauricio', 4, 'N', 'N', 'S', 'N');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('44444444403', 'Kiko Peres', 4, 'N', 'N', 'S', 'N');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('55555555501', 'Russo Passapusso', 5, 'N', 'S', 'N', 'S');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('55555555502', 'Roberto Barreto', 5, 'N', 'S', 'S', 'N');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('55555555503', 'Sekubass', 5, 'N', 'N', 'S', 'N');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('66666666601', 'Rafael Bittencourt', 6, 'S', 'S', 'S', 'N');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('66666666602', 'Fabio Lione', 6, 'N', 'N', 'N', 'S');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('66666666603', 'Felipe Andreoli', 6, 'N', 'N', 'S', 'N');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('77777777701', 'Mano Brown', 7, 'N', 'S', 'N', 'S');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('77777777702', 'KL Jay', 7, 'S', 'N', 'S', 'N');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('77777777703', 'Edi Rock', 7, 'N', 'S', 'N', 'S');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('88888888801', 'Tony Bellotto', 8, 'N', 'S', 'S', 'N');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('88888888802', 'Branco Mello', 8, 'N', 'S', 'S', 'S');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('88888888803', 'Sergio Britto', 8, 'N', 'S', 'S', 'S');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('99999999901', 'Jorge Barcelos', 9, 'N', 'N', 'N', 'S');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('99999999902', 'Mateus Liduario', 9, 'N', 'S', 'S', 'S');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('99999999903', 'Musico Jorge 1', 9, 'N', 'N', 'S', 'N');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('10101010101', 'Tato Falamansa', 10, 'N', 'S', 'S', 'S');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('10101010102', 'Dezinho', 10, 'N', 'N', 'S', 'N');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('10101010103', 'Alemao Falamansa', 10, 'N', 'N', 'S', 'N');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('11011011001', 'Jorge du Peixe NZ', 11, 'N', 'S', 'S', 'S');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('11011011002', 'Dengue NZ', 11, 'N', 'N', 'S', 'N');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('11011011003', 'Pupillo', 11, 'S', 'N', 'S', 'N');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('12012012001', 'Joao Gordo', 12, 'N', 'S', 'N', 'S');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('12012012002', 'Jao Ratos', 12, 'N', 'S', 'S', 'N');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('12012012003', 'Boni', 12, 'N', 'N', 'S', 'N');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('13013013001', 'Lucille Guitar', 13, 'N', 'N', 'S', 'N');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('13013013002', 'Blues Singer', 13, 'N', 'S', 'N', 'S');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('13013013003', 'Bass Blues', 13, 'N', 'N', 'S', 'N');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('14014014001', 'Lukas Ruiz', 14, 'S', 'S', 'S', 'N');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('14014014002', 'Produtor Vintage 1', 14, 'S', 'N', 'N', 'S');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('14014014003', 'Roadie Vintage', 14, 'N', 'N', 'S', 'N');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('15015015001', 'Wagner Lamounier', 15, 'N', 'S', 'S', 'S');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('15015015002', 'Gerald Minelli', 15, 'N', 'S', 'S', 'N');
-INSERT INTO Membro (cpf, nome, banda, eh_produtor, eh_compositor, eh_instrumentista, eh_vocalista) VALUES ('15015015003', 'Zeder Butcher', 15, 'N', 'N', 'S', 'N');
+EXEC cadastrar_membro('11111111101', 'Andreas Kisser', 1, 'I');
+EXEC cadastrar_membro('11111111102', 'Derrick Green', 1, 'V');
+EXEC cadastrar_membro('11111111103', 'Eloy Casagrande', 1, 'I');
 
+EXEC cadastrar_membro('22222222201', 'Samuel Rosa', 2, 'A');
+EXEC cadastrar_membro('22222222202', 'Lelo Zaneti', 2, 'I');
+EXEC cadastrar_membro('22222222203', 'Henrique Portugal', 2, 'I');
+
+EXEC cadastrar_membro('33333333301', 'Alok Petrillo', 3, 'I');
+EXEC cadastrar_membro('33333333302', 'Bhaskar Petrillo', 3, 'I');
+EXEC cadastrar_membro('33333333303', 'Roadie Alok', 3, 'I');
+
+EXEC cadastrar_membro('44444444401', 'Alexandre Carlo', 4, 'A');
+EXEC cadastrar_membro('44444444402', 'Luis Mauricio', 4, 'I');
+EXEC cadastrar_membro('44444444403', 'Kiko Peres', 4, 'I');
+
+EXEC cadastrar_membro('55555555501', 'Russo Passapusso', 5, 'V');
+EXEC cadastrar_membro('55555555502', 'Roberto Barreto', 5, 'I');
+EXEC cadastrar_membro('55555555503', 'Sekubass', 5, 'I');
+
+EXEC cadastrar_membro('66666666601', 'Rafael Bittencourt', 6, 'I');
+EXEC cadastrar_membro('66666666602', 'Fabio Lione', 6, 'V');
+EXEC cadastrar_membro('66666666603', 'Felipe Andreoli', 6, 'I');
+
+EXEC cadastrar_membro('77777777701', 'Mano Brown', 7, 'V');
+EXEC cadastrar_membro('77777777702', 'KL Jay', 7, 'I');
+EXEC cadastrar_membro('77777777703', 'Edi Rock', 7, 'V');
+
+EXEC cadastrar_membro('88888888801', 'Tony Bellotto', 8, 'I');
+EXEC cadastrar_membro('88888888802', 'Branco Mello', 8, 'A');
+EXEC cadastrar_membro('88888888803', 'Sergio Britto', 8, 'A');
+
+EXEC cadastrar_membro('99999999901', 'Jorge Barcelos', 9, 'V');
+EXEC cadastrar_membro('99999999902', 'Mateus Liduario', 9, 'A');
+EXEC cadastrar_membro('99999999903', 'Musico Jorge 1', 9, 'I');
+
+EXEC cadastrar_membro('10101010101', 'Tato Falamansa', 10, 'A');
+EXEC cadastrar_membro('10101010102', 'Dezinho', 10, 'I');
+EXEC cadastrar_membro('10101010103', 'Alemao Falamansa', 10, 'I');
+
+EXEC cadastrar_membro('11011011001', 'Jorge du Peixe NZ', 11, 'A');
+EXEC cadastrar_membro('11011011002', 'Dengue NZ', 11, 'I');
+EXEC cadastrar_membro('11011011003', 'Pupillo', 11, 'I');
+
+EXEC cadastrar_membro('12012012001', 'Joao Gordo', 12, 'V');
+EXEC cadastrar_membro('12012012002', 'Jao Ratos', 12, 'I');
+EXEC cadastrar_membro('12012012003', 'Boni', 12, 'I');
+
+EXEC cadastrar_membro('13013013001', 'Lucille Guitar', 13, 'I');
+EXEC cadastrar_membro('13013013002', 'Blues Singer', 13, 'V');
+EXEC cadastrar_membro('13013013003', 'Bass Blues', 13, 'I');
+
+EXEC cadastrar_membro('14014014001', 'Lukas Ruiz', 14, 'I');
+EXEC cadastrar_membro('14014014002', 'Produtor Vintage 1', 14, 'V');
+EXEC cadastrar_membro('14014014003', 'Roadie Vintage', 14, 'I');
+
+EXEC cadastrar_membro('15015015001', 'Wagner Lamounier', 15, 'A');
+EXEC cadastrar_membro('15015015002', 'Gerald Minelli', 15, 'I');
+EXEC cadastrar_membro('15015015003', 'Zeder Butcher', 15, 'I');
 -- ATUALIZAR LIDERES
 UPDATE Banda SET lider = '11111111101' WHERE id_banda = 1;
 UPDATE Banda SET lider = '22222222201' WHERE id_banda = 2;
