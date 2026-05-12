@@ -37,7 +37,7 @@ CREATE TABLE Banda (
     nome_banda      VARCHAR2(100)   NOT NULL,
     genero          VARCHAR2(50)    NOT NULL,
     rider_tecnico   VARCHAR2(4000)  NOT NULL, 
-    lider           CHAR(11),
+    lider           CHAR(11),       NOT NULL,
     madrinha        NUMBER(10),
 
     CONSTRAINT pk_banda PRIMARY KEY (id_banda),
@@ -99,7 +99,7 @@ CREATE TABLE Instrumento (
     membro      CHAR(11)       NOT NULL,
     cod_inv     NUMBER(10)     NOT NULL, 
     tipo        VARCHAR2(60)   NOT NULL,
-    marca       VARCHAR2(60),
+    marca       VARCHAR2(60),  NOT NULL,
 
     CONSTRAINT pk_instrumento PRIMARY KEY (membro, cod_inv),
     CONSTRAINT fk_instrumento_membro FOREIGN KEY (membro)
